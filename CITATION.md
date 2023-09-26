@@ -2,10 +2,10 @@ If you make use of the Massachusetts Buildings data, please cite the following r
 
 ``` bibtex
 @phdthesis{MnihThesis,
-    author = {Volodymyr Mnih},
-    title = {Machine Learning for Aerial Image Labeling},
-    school = {University of Toronto},
-    year = {2013}
+  author = {Volodymyr Mnih},
+  title = {Machine Learning for Aerial Image Labeling},
+  school = {University of Toronto},
+  year = {2013}
 }
 ```
 
