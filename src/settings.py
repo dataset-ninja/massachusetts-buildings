@@ -25,7 +25,7 @@ APPLICATIONS: List[Union[Industry, Domain, Research]] = [
     Domain.Geospatial(is_used=False),
     Industry.Environmental(is_used=False),
 ]
-CATEGORY: Category = Category.Satellite()
+CATEGORY: Category = Category.Satellite(extra=Category.Aerial())
 
 CV_TASKS: List[CVTask] = [
     CVTask.InstanceSegmentation(),
