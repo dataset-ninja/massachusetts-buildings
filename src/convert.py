@@ -1,12 +1,14 @@
-import supervisely as sly
 import os
-from dataset_tools.convert import unpack_if_archive
-import src.settings as s
 from urllib.parse import unquote, urlparse
-from supervisely.io.fs import get_file_name, get_file_name_with_ext
-from cv2 import connectedComponents
 
+import supervisely as sly
+from cv2 import connectedComponents
+from dataset_tools.convert import unpack_if_archive
+from supervisely.io.fs import get_file_name, get_file_name_with_ext
 from tqdm import tqdm
+
+import src.settings as s
+
 
 def download_dataset(teamfiles_dir: str) -> str:
     """Use it for large datasets to convert them on the instance"""
@@ -29,7 +31,7 @@ def download_dataset(teamfiles_dir: str) -> str:
             total=fsize,
             unit="B",
             unit_scale=True,
-        ) as pbar:        
+        ) as pbar:
             api.file.download(team_id, teamfiles_path, local_path, progress_cb=pbar)
         dataset_path = unpack_if_archive(local_path)
 
@@ -57,7 +59,8 @@ def download_dataset(teamfiles_dir: str) -> str:
 
         dataset_path = storage_dir
     return dataset_path
-    
+
+
 def count_files(path, extension):
     count = 0
     for root, dirs, files in os.walk(path):
@@ -65,14 +68,14 @@ def count_files(path, extension):
             if file.endswith(extension):
                 count += 1
     return count
-    
+
+
 def convert_and_upload_supervisely_project(
     api: sly.Api, workspace_id: int, project_name: str
 ) -> sly.ProjectInfo:
     ### Function should read local dataset and upload it to Supervisely project, then return project info.###
-    dataset_path = os.path.join("Massachusetts Buildings","png")
-    batch_size = 50
-
+    dataset_path = os.path.join("Massachusetts Buildings", "png")
+    batch_size = 10
 
     def create_ann(image_path):
         labels = []
@@ -94,7 +97,6 @@ def convert_and_upload_supervisely_project(
 
         return sly.Annotation(img_size=(img_height, img_wight), labels=labels)
 
-
     ds_to_pathes = {"train": "train_labels", "val": "val_labels", "test": "test_labels"}
 
     obj_class = sly.ObjClass("building", sly.Bitmap)
@@ -102,7 +104,6 @@ def convert_and_upload_supervisely_project(
     project = api.project.create(workspace_id, project_name, change_name_if_conflict=True)
     meta = sly.ProjectMeta(obj_classes=[obj_class])
     api.project.update_meta(project.id, meta.to_json())
-
 
     for ds_name, masks_path in ds_to_pathes.items():
         images_path = os.path.join(dataset_path, ds_name)
