@@ -63,7 +63,7 @@ PAPER: Optional[Union[str, List[str], Dict[str, str]]] = [
 ]
 BLOGPOST: Optional[Union[str, List[str], Dict[str, str]]] = None
 REPOSITORY: Optional[Union[str, List[str], Dict[str, str]]] = {
-    "Alternative Kaggle Repository": "https://www.kaggle.com/datasets/balraj98/massachusetts-buildings-dataset"
+    "Kaggle": "https://www.kaggle.com/datasets/balraj98/massachusetts-buildings-dataset"
 }
 
 CITATION_URL: Optional[str] = "https://www.cs.toronto.edu/~vmnih/data/"
