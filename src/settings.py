@@ -13,8 +13,8 @@ from dataset_tools.templates import (
 ##################################
 # * Before uploading to instance #
 ##################################
-PROJECT_NAME: str = "Massachusetts Buildings"
-PROJECT_NAME_FULL: str = "Massachusetts Buildings"
+PROJECT_NAME: str = "Massachusetts Buildings Dataset"
+PROJECT_NAME_FULL: str = "Massachusetts Buildings Dataset"
 HIDE_DATASET = False  # set False when 100% sure about repo quality
 
 ##################################
@@ -68,6 +68,7 @@ REPOSITORY: Optional[Union[str, List[str], Dict[str, str]]] = {
 
 CITATION_URL: Optional[str] = "https://www.cs.toronto.edu/~vmnih/data/"
 AUTHORS: Optional[List[str]] = ["Volodymyr Mnih"]
+AUTHORS_CONTACTS: Optional[List[str]] = ["vmnih@cs.toronto.edu"]
 
 ORGANIZATION_NAME: Optional[Union[str, List[str]]] = ["University of Toronto"]
 ORGANIZATION_URL: Optional[Union[str, List[str]]] = ["https://www.utoronto.ca/"]
@@ -121,6 +122,7 @@ def get_settings():
     settings["repository"] = REPOSITORY
     settings["citation_url"] = CITATION_URL
     settings["authors"] = AUTHORS
+    settings["authors_contacts"] = AUTHORS_CONTACTS
     settings["organization_name"] = ORGANIZATION_NAME
     settings["organization_url"] = ORGANIZATION_URL
     settings["slytagsplit"] = SLYTAGSPLIT
