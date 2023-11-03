@@ -1,3 +1,3 @@
-# Massachusetts Buildings
+# Massachusetts Buildings Dataset
 
-Massachusetts Buildings is a dataset for instance segmentation, semantic segmentation, and object detection tasks.
+Massachusetts Buildings Dataset is a dataset for instance segmentation, semantic segmentation, and object detection tasks.
